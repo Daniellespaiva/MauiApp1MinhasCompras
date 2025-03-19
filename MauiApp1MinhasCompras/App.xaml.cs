@@ -4,7 +4,7 @@ namespace MauiApp1MinhasCompras
 {
     public partial class App : Application
     {
-        static SQLiteDatabaseHelper _db;
+        static SQLiteDatabaseHelper? _db;
 
         public static SQLiteDatabaseHelper Db
         {
@@ -17,16 +17,11 @@ namespace MauiApp1MinhasCompras
                         "banco_sqlite_compra,db3");
 
                     _db = new SQLiteDatabaseHelper(path);
-                        
-                        
-                   
                 }
 
                 return _db;
             }
         }
-
-
 
         public App()
         {
