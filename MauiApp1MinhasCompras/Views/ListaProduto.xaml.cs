@@ -10,7 +10,7 @@ public partial class ListaProduto : ContentPage
 	ObservableCollection<Produto> lista = new ObservableCollection<Produto>();
     public ListaProduto()
 	{
-		InitializeComponent();
+        InitializeComponent();
 
         lst_produtos.ItemsSource = lista;
     }
@@ -151,4 +151,22 @@ public partial class ListaProduto : ContentPage
         }
 
     }
+
+    // Evento do Picker para capturar a categoria selecionada
+    private void picker_categoria_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string categoriaSelecionada = picker_categoria.SelectedItem?.ToString();
+
+        if (!string.IsNullOrEmpty(categoriaSelecionada))
+        {
+            // Apenas exibe no console para teste; pode ser integrado conforme necessidade
+            Console.WriteLine($"Categoria selecionada: {categoriaSelecionada}");
+        }
+        else
+        {
+            Console.WriteLine("Nenhuma categoria selecionada.");
+        }
+    }
+
+
 }
