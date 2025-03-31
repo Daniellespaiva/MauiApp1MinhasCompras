@@ -1,7 +1,5 @@
 using MauiApp1MinhasCompras.Models;
 using System.Collections.ObjectModel;
-using System.Reflection.Metadata;
-using System.Threading.Tasks;
 
 namespace MauiApp1MinhasCompras.Views;
 
@@ -22,8 +20,7 @@ public partial class ListaProduto : ContentPage
             lista.Clear();
 			List<Produto> tmp = await App.Db.GetAll();
 
-			tmp.ForEach( i => lista.Add(i));
-
+            tmp.ForEach(i => lista.Add(i));
         }
         catch (Exception ex)
 		{
@@ -91,9 +88,8 @@ public partial class ListaProduto : ContentPage
         try
         {
 
-            MenuItem selecionado = sender as MenuItem;
 
-            Produto p = selecionado.BindingContext as Produto;
+                
 
             bool confirm = await DisplayAlert(
             "tem Certeza?", $"Remove {p.Descricao}", "Sim", "N�o");
@@ -106,11 +102,8 @@ public partial class ListaProduto : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Ops", ex.Message, "Ok");
-
 
         }
-    }
 
     private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
@@ -153,11 +146,11 @@ public partial class ListaProduto : ContentPage
     }
 
     // Evento do Picker para capturar a categoria selecionada
-    private void picker_categoria_SelectedIndexChanged(object sender, EventArgs e)
+    private async void picker_categoria_SelectedIndexChanged(object sender, EventArgs e)
     {
-        string categoriaSelecionada = picker_categoria.SelectedItem?.ToString();
+        try
 
-        if (!string.IsNullOrEmpty(categoriaSelecionada))
+            // Validando se a categoria selecionada não é nula
         {
             // Apenas exibe no console para teste; pode ser integrado conforme necessidade
             Console.WriteLine($"Categoria selecionada: {categoriaSelecionada}");
@@ -167,6 +160,4 @@ public partial class ListaProduto : ContentPage
             Console.WriteLine("Nenhuma categoria selecionada.");
         }
     }
-
-
 }

@@ -22,9 +22,6 @@ namespace MauiApp1MinhasCompras.Helpers
             return _conn.ExecuteAsync(sql, p.Descricao, p.Quantidade, p.Preco, p.Categoria, p.Id);
         }
 
-
-
-
         public Task<int> Delete(int id)
         { 
             return _conn.Table<Produto>().DeleteAsync(i => i.Id == id);
@@ -39,8 +36,5 @@ namespace MauiApp1MinhasCompras.Helpers
 
             return _conn.QueryAsync<Produto>(sql, $"%{categoria}%");
         }
-
-
-
     }
 }
